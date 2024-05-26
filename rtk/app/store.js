@@ -1,7 +1,9 @@
 const { configureStore } = require("@reduxjs/toolkit")
+const { createLogger } = require("redux-logger")
+
 const counterReducer = require("../features/counter/counterSlice")
 const dynamicCounterReducer = require("../features/dynamicCounter/dynamicCounterSlice")
-const { createLogger } = require("redux-logger")
+const postReducer = require("../features/post/postSlice")
 
 const logger = createLogger();
 
@@ -9,7 +11,8 @@ const logger = createLogger();
 const store = configureStore({
     reducer: {
         counter: counterReducer,
-        dynamicCounter: dynamicCounterReducer
+        dynamicCounter: dynamicCounterReducer,
+        post: postReducer
     },
     middleware: (getDefaultMiddlewares) => {
         return getDefaultMiddlewares().concat(logger);
